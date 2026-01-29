@@ -12,7 +12,13 @@ class ProductService:
 
     def get_all_products(self) -> ProductListResponse:
         products = self.product_repository.get_all()
-        products_response = [ProductResponse.model_validate(prod) for prod in products]
+
+        # Преобразуем ORM-объекты в Pydantic модели
+        products_response = [
+            ProductResponse.model_validate(prod, from_attributes=True)
+            for prod in products
+        ]
+
         return ProductListResponse(products=products_response, total=len(products_response))
 
     def get_product_by_id(self, product_id: int) -> ProductResponse:

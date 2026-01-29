@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 from .category import CategoryResponse
 
 class ProductBase(BaseModel):
@@ -15,7 +15,7 @@ class ProductBase(BaseModel):
 class ProductCreate(ProductBase):
     pass
 
-class ProductResponse(ProductBase):
+class ProductResponse(BaseModel):
     id: int = Field(..., description='Unique Product ID')
     name: str
     description: Optional[str]
@@ -23,14 +23,14 @@ class ProductResponse(ProductBase):
     category_id: int
     image_url: Optional[str]
     created_at: datetime
-    category: CategoryResponse = Field(..., description='Product Category Details')
+    category: CategoryResponse
 
     class Config:
         from_attributes = True
 
-class ProductListResponse(ProductBase):
-    products: list[ProductResponse]
-    total: int = Field(..., description='Total Product Count')
+class ProductListResponse(BaseModel):
+    products: List[ProductResponse]
+    total: int
 
 
 
