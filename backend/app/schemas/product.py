@@ -26,7 +26,7 @@ class ProductResponse(ProductBase):
     category: CategoryResponse = Field(..., description='Product Category Details')
 
     class Config:
-        form_attributes = True
+        from_attributes = True
 
 class ProductListResponse(ProductBase):
     products: list[ProductResponse]
