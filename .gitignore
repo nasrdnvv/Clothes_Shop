@@ -1,0 +1,45 @@
+# =============================
+# Python / Backend (FastAPI)
+# =============================
+
+# Virtual environment
+venv/
+.env
+.env.*
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+*.idea/
+*.vscode/
+
+# =============================
+# Node / Frontend (Vue)
+# =============================
+
+# Node modules
+frontend/node_modules/
+
+# Build output
+frontend/dist/
+frontend/.vite/
+
+# Environment files
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# IDE / Editor files
+frontend/.vscode/
+*.log
+*.swp
+*.sublime-workspace
+*.sublime-project
+
+# Mac system files
+.DS_Store
+
+# Optional temp files
+*.tmp
